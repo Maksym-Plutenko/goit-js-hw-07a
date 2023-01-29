@@ -28,15 +28,12 @@ gallery.addEventListener('click', event => {
     image = basicLightbox.create(`
 		<img width="1400" height="900" src=${event.target.dataset.source}>
 	`);
-    image.show();
-
-    document.addEventListener('keydown', handleEsc);
+    image.show(() => document.addEventListener('keydown', handleEsc));
 });
 
 function handleEsc(event) {
     if (event.code === 'Escape') {
-        image.close();
-        document.removeEventListener('keydown', handleEsc);
+        image.close(() => document.removeEventListener('keydown', handleEsc));
     }
 }
 
